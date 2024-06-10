@@ -1,0 +1,120 @@
+!!@@##@@!! -- Example 0
+Dondoa taasisi zilizotajwa kwenye matini yafuatayo na ubainishe kila moja. Unahitaji kufuata miongozo hii ya ufafanuzi kwa taasisi zilizotajwa: Eneo: Eneo au vituo halisi. Mtu: Majina ya watu. Shirika. Mashirika. Tarehe: Tarehe au saa. Kando na hiyo, ongeza B- kama kiambishi cha awali kwa tokeni ya kwanza ya taasisi yoyote na I- kwa tokeni zinazofuata iwapo zipo. Iwapo tokeni si sehemu ya taasisi iliyotajwa, ialamishe kama O
+Habari hii inatokana na vyanzo vya habari mbalimbaliRaia 25 wameuawa mashariki mwa Jamhuri ya kidemokrasia ya Congo kutokana na mashambulizi ya waasi wanaoripotiwa kuwa wa kundi la Allied democratic forces , ADF . Habari: O
+hii: O
+inatokana: O
+na: O
+vyanzo: O
+vya: O
+habari: O
+mbalimbaliRaia: O
+25: O
+wameuawa: O
+mashariki: O
+mwa: O
+Jamhuri: B-LOC
+ya: I-LOC
+kidemokrasia: I-LOC
+ya: I-LOC
+Congo: I-LOC
+kutokana: O
+na: O
+mashambulizi: O
+ya: O
+waasi: O
+wanaoripotiwa: O
+kuwa: O
+wa: O
+kundi: O
+la: O
+Allied: B-ORG
+democratic: I-ORG
+forces: I-ORG
+,: O
+ADF: B-ORG
+.: O
+
+
+Dondoa taasisi zilizotajwa kwenye matini yafuatayo na ubainishe kila moja. Unahitaji kufuata miongozo hii ya ufafanuzi kwa taasisi zilizotajwa: Eneo: Eneo au vituo halisi. Mtu: Majina ya watu. Shirika. Mashirika. Tarehe: Tarehe au saa. Kando na hiyo, ongeza B- kama kiambishi cha awali kwa tokeni ya kwanza ya taasisi yoyote na I- kwa tokeni zinazofuata iwapo zipo. Iwapo tokeni si sehemu ya taasisi iliyotajwa, ialamishe kama O
+Mpango wa Chakula Duniani , WFP , unatoa onyo kuwa ukame mkali uliopo kusini mwa Madagascar , umesababisha njaa , na hali ya kukosekana chakula .
+!!@@##@@!! -- Example 1
+Dondoa taasisi zilizotajwa kwenye matini yafuatayo na ubainishe kila moja. Unahitaji kufuata miongozo hii ya ufafanuzi kwa taasisi zilizotajwa: Eneo: Eneo au vituo halisi. Mtu: Majina ya watu. Shirika. Mashirika. Tarehe: Tarehe au saa. Kando na hiyo, ongeza B- kama kiambishi cha awali kwa tokeni ya kwanza ya taasisi yoyote na I- kwa tokeni zinazofuata iwapo zipo. Iwapo tokeni si sehemu ya taasisi iliyotajwa, ialamishe kama O
+Amesema Oguna , akiongezea kwamba """" Unajua pia kwamba tuna wanajeshi wetu wa KDF wanaolinda usalama Somalia kwa hivyo kuna mambo mengi sana yanayotuhusu ndani ya Somalia . Amesema: O
+Oguna: B-PER
+,: O
+akiongezea: O
+kwamba: O
+"""": O
+Unajua: O
+pia: O
+kwamba: O
+tuna: O
+wanajeshi: O
+wetu: O
+wa: O
+KDF: B-ORG
+wanaolinda: O
+usalama: O
+Somalia: B-LOC
+kwa: O
+hivyo: O
+kuna: O
+mambo: O
+mengi: O
+sana: O
+yanayotuhusu: O
+ndani: O
+ya: O
+Somalia: B-LOC
+.: O
+
+
+Tambua na uweke lebo kwenye taasisi zilizotajwa katika matini yanayofuata. Unahitaji kufuata miongozo hii kwa taasisi zilizotajwa: Eneo: Eneo au vituo halisi. Mtu: Majina ya watu. Shirika. Mashirika. Tarehe: Tarehe au saa. Kando na hiyo, ongeza B- kama kiambishi cha awali kwa tokeni ya kwanza ya taasisi yoyote na I- kwa tokeni zinazofuata iwapo zipo. Iwapo tokeni si sehemu ya taasisi iliyotajwa, ialamishe kama O.
+Chama kikuu cha upinzani Chadema , hakijatoa ripoti zaidi kuhusu kukamatwa kwa Lisu , vile vile maafisa wa polisi hawajaeleza sababu zilizopelekea kukamatwa .
+!!@@##@@!! -- Example 2
+Tafadhali dondoa na ubainishe taasisi zilizotajwa kwenye matini haya. Unahitaji kufuata miongozo hii kwa taasisi zilizotajwa: Eneo: Eneo au vituo halisi. Mtu: Majina ya watu. Shirika. Mashirika. Tarehe: Tarehe au saa. Kando na hiyo, ongeza B- kama kiambishi cha awali kwa tokeni ya kwanza ya taasisi yoyote na I- kwa tokeni zinazofuata iwapo zipo. Iwapo tokeni si sehemu ya taasisi iliyotajwa, ialamishe kama O
+Lazzarini , Mkuu wa idara ya wakimbizi , UNRWA , anaeleza : """" Hii ni mara ya pili kwangu mimi kusimama hapa Gaza baada ya mgogoro kama mjumbe wa jumuia ya wafanyakazi wa huduma za dharura na hili linanikera sana . Lazzarini: B-PER
+,: O
+Mkuu: O
+wa: O
+idara: O
+ya: O
+wakimbizi: O
+,: O
+UNRWA: B-ORG
+,: O
+anaeleza: O
+:: O
+"""": O
+Hii: O
+ni: O
+mara: O
+ya: O
+pili: O
+kwangu: O
+mimi: O
+kusimama: O
+hapa: O
+Gaza: B-LOC
+baada: O
+ya: O
+mgogoro: O
+kama: O
+mjumbe: O
+wa: O
+jumuia: O
+ya: O
+wafanyakazi: O
+wa: O
+huduma: O
+za: O
+dharura: O
+na: O
+hili: O
+linanikera: O
+sana: O
+.: O
+
+
+Tambua na uweke lebo kwenye taasisi zilizotajwa katika matini yanayofuata. Unahitaji kufuata miongozo hii kwa taasisi zilizotajwa: Eneo: Eneo au vituo halisi. Mtu: Majina ya watu. Shirika. Mashirika. Tarehe: Tarehe au saa. Kando na hiyo, ongeza B- kama kiambishi cha awali kwa tokeni ya kwanza ya taasisi yoyote na I- kwa tokeni zinazofuata iwapo zipo. Iwapo tokeni si sehemu ya taasisi iliyotajwa, ialamishe kama O.
+Afrika kusini ndio nchi yenye idadi kubwa ya maambukizi ya virusi vya corona barani Afrika , ikiwa na visa zaidi ya laki 3 na elfu 80 .
