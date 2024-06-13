@@ -1,6 +1,6 @@
 group:
     - ner
-dataset_path: lelapa/NER_dataset_ins
+dataset_path: lelapa/ner_dataset_inst_none-removed
 output_type: generate_until
 validation_split: dev
 test_split: test

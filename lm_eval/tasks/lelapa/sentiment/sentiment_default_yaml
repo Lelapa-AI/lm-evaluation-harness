@@ -1,6 +1,6 @@
 group:
     - sentiment
-dataset_path: lelapa/sentiment_dataset_inst
+dataset_path: lelapa/sentiment_dataset_inst_none-removed
 output_type: multiple_choice
 validation_split: dev
 test_split: test

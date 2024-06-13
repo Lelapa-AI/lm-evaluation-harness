@@ -1,7 +1,7 @@
 group:
     - lelapa
     - qa
-dataset_path: lelapa/QA_dataset_inst
+dataset_path: lelapa/qa_dataset_inst_none-removed
 process_docs: !function utils.process_docs
 output_type: generate_until
 validation_split: dev
