@@ -1,27 +1,6 @@
 from sklearn.metrics import f1_score
 
 
-# def doc_to_target(doc, language):
-#     replacements = {
-#         'hausa': {
-#             "Kyakkyawa": "Positive",
-#             "Korau": "Negative",
-#             "Tsaka-tsaki": "Neutral"
-#         },
-#         'swahili': {
-#             "Chanya": "Positive",
-#             "Hasi": "Negative",
-#             "Wastani": "Neutral"
-#         },
-#         'yoruba': {
-#             "Títọ́": "Positive",
-#             "Òdì": "Negative",
-#             "Àarín": "Neutral"
-#         }
-#     }
-#     print(language)
-#     return replacements[language][doc['targets']]
-
 def doc_to_target_hausa(doc):
     replacements = {
         "Kyakkyawa": "Positive",
