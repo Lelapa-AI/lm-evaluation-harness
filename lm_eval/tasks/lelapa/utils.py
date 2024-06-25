@@ -7,7 +7,7 @@ mt_lang = ['hau-eng', 'zul-eng', 'swa-eng', 'xho-eng', 'yor-eng']
 mt_reverse = ['eng-hau', 'eng-zul', 'eng-swa', 'eng-xho', 'eng-yor']
 
 
-def gen_lang_yamls(output_dir: str, overwrite: bool, mode: str, task: str) -> None:
+def gen_lang_yamls(output_dir: str, overwrite: bool, mode: str, task: str, prompt: str) -> None:
     """
     Generate a yaml file for each language.
 
@@ -18,8 +18,8 @@ def gen_lang_yamls(output_dir: str, overwrite: bool, mode: str, task: str) -> No
     languages = tasks_lang if mode is None else mt_lang if mode == "mmt" else mt_reverse
     for lang in languages:
         try:
-            task_name = f"{task}_{lang}"
-            yaml_template = f"{task}_default_yaml"
+            task_name = f"{task}_{prompt}_{lang}"
+            yaml_template = f"{task}_{prompt}_default_yaml"
 
             file_name = f"{task_name}.yaml"
             with open(
@@ -51,28 +51,34 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--overwrite",
-        default=False,
+        default=True,
         action="store_true",
         help="Overwrite files if they already exist",
     )
     parser.add_argument(
-        "--output-dir", default="./ner", help="Directory to write yaml files to"
+        "--output-dir", default="./mmt/native/english-african/", help="Directory to write yaml files to"
     )
     parser.add_argument(
         "--mode",
-        default=None,
+        default="mmt_reverse",
         choices=["mmt", "mmt_reverse"],
         help="Mode of task",
     )
     parser.add_argument(
+        "--prompt",
+        default="native",
+        choices=["direct", "english", "native"],
+        help="Prompt of the task",
+    )
+    parser.add_argument(
         "--task",
-        default='ner',
+        default='mmt',
         choices=["mmt", "senti", "qa", "ner", "pos"],
         help="Task to create",
     )
     args = parser.parse_args()
 
-    gen_lang_yamls(output_dir=args.output_dir, overwrite=args.overwrite, mode=args.mode, task=args.task)
+    gen_lang_yamls(output_dir=args.output_dir, overwrite=args.overwrite, mode=args.mode, task=args.task, prompt=args.prompt)
 
 
 if __name__ == "__main__":
