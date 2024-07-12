@@ -1,7 +1,7 @@
 #!/bin/bash
 
 models=(
-  "bonadossou/afrolm_active_learning"
+  # "bonadossou/afrolm_active_learning"
   "Davlan/afro-xlmr-large"
   "bigscience/bloom"
   "bigscience/mt0-xxl-mt"
