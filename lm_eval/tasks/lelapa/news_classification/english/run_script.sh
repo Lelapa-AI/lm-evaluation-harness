@@ -1,12 +1,13 @@
 #!/bin/bash
 
 models=(
-  "lelapa/lelapa-llama-13b-instruction-finetuned-with-lora-model-v2"
-  "google/flan-t5-xxl"
+  "bonadossou/afrolm_active_learning"
+  "Davlan/afro-xlmr-large"
+  "bigscience/bloom"
   "bigscience/mt0-xxl-mt"
-  "CohereForAI/aya-101"
-  "bigscience/bloomz-7b1-mt"
-  "meta-llama/Meta-Llama-3-8B-Instruct"
+  "MaLA-LM/mala-500-10b-v2"
+  "dice-research/lola_v1"
+  "UBC-NLP/serengeti"
 )
 task=nc_english_swahili,nc_english_hausa,nc_english_yoruba
 
