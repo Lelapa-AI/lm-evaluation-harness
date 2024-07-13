@@ -3,9 +3,9 @@
 models=(
   # "bonadossou/afrolm_active_learning"
   # "Davlan/afro-xlmr-large"
-  "bigscience/bloom"
-  "bigscience/mt0-xxl-mt"
-  "MaLA-LM/mala-500-10b-v2"
+  # "bigscience/bloom"
+  # "bigscience/mt0-xxl-mt"
+  # "MaLA-LM/mala-500-10b-v2"
   "dice-research/lola_v1"
   "UBC-NLP/serengeti"
 )
@@ -23,7 +23,7 @@ do
     accelerate launch -m lm_eval --model hf \
             --model_args "pretrained=${model}",trust_remote_code=True \
             --tasks $task \
-            --batch_size 1 \
+            --batch_size 16 \
             --output_path "$OUTPUT_DIR" \
             --num_fewshot $fewshot \
             --verbosity DEBUG \
