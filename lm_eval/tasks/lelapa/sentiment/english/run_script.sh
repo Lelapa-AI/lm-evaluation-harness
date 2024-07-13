@@ -7,14 +7,14 @@ models=(
   # "bigscience/mt0-xxl-mt"
   # "MaLA-LM/mala-500-10b-v2"
   "dice-research/lola_v1"
-  "UBC-NLP/serengeti"
+  # "UBC-NLP/serengeti"
 )
 task=senti_english_swahili,senti_english_hausa,senti_english_yoruba
 
 for model in "${models[@]}"
 do
   echo "Evaluating model: $model"
-  for fewshot in 0 2
+  for fewshot in 2
   do
     export OUTPUT_DIR=results/$fewshot
 
