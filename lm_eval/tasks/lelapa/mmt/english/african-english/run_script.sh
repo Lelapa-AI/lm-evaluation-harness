@@ -20,10 +20,9 @@ do
 
     mkdir -p "$OUTPUT_DIR"
 
-    lm_eval --model hf \
+    accelerate launch -m lm_eval --model hf \
             --model_args "pretrained=${model}",trust_remote_code=True \
             --tasks $task \
-            --device cuda \
             --batch_size 1 \
             --output_path "$OUTPUT_DIR" \
             --num_fewshot $fewshot \
