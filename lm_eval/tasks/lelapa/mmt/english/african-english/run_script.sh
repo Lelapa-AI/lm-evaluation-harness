@@ -23,7 +23,7 @@ do
     accelerate launch -m lm_eval --model hf \
             --model_args "pretrained=${model}",trust_remote_code=True \
             --tasks $task \
-            --batch_size 16 \
+            --batch_size 8 \
             --output_path "$OUTPUT_DIR" \
             --num_fewshot $fewshot \
             --verbosity DEBUG \
