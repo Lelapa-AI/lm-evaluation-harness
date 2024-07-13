@@ -2,7 +2,7 @@
 
 models=(
   # "bonadossou/afrolm_active_learning"
-  "Davlan/afro-xlmr-large"
+  # "Davlan/afro-xlmr-large"
   "bigscience/bloom"
   "bigscience/mt0-xxl-mt"
   "MaLA-LM/mala-500-10b-v2"
