@@ -23,7 +23,7 @@ do
     lm_eval --model hf \
             --model_args "pretrained=${model}",trust_remote_code=True,parallelize=True \
             --tasks $task \
-            --batch_size 4 \
+            --batch_size 2 \
             --output_path "$OUTPUT_DIR" \
             --num_fewshot $fewshot \
             --verbosity DEBUG \
