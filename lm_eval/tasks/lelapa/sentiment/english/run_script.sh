@@ -4,10 +4,10 @@ models=(
   # "bonadossou/afrolm_active_learning"
   # "Davlan/afro-xlmr-large"
   # "bigscience/bloom"
-  "bigscience/mt0-xxl-mt"
-  "MaLA-LM/mala-500-10b-v2"
-  # "dice-research/lola_v1"
-  # "UBC-NLP/serengeti"
+  # "bigscience/mt0-xxl-mt"
+  # "MaLA-LM/mala-500-10b-v2"
+  "dice-research/lola_v1"
+  "UBC-NLP/serengeti"
 )
 task=senti_english_swahili,senti_english_hausa,senti_english_yoruba
 
