@@ -3,7 +3,7 @@
 models=(
   # "bonadossou/afrolm_active_learning"
   # "Davlan/afro-xlmr-large"
-  "bigscience/bloom"
+  # "bigscience/bloom"
   "bigscience/mt0-xxl-mt"
   "MaLA-LM/mala-500-10b-v2"
   # "dice-research/lola_v1"
@@ -23,7 +23,7 @@ do
     lm_eval --model hf \
             --model_args "pretrained=${model}",trust_remote_code=True,parallelize=True \
             --tasks $task \
-            --batch_size 16 \
+            --batch_size 4 \
             --output_path "$OUTPUT_DIR" \
             --num_fewshot $fewshot \
             --verbosity DEBUG \
