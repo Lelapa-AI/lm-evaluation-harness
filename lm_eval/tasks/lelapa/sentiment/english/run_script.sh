@@ -3,10 +3,10 @@
 models=(
   # "bonadossou/afrolm_active_learning"
   # "Davlan/afro-xlmr-large"
-  # "bigscience/bloom"
-  # "bigscience/mt0-xxl-mt"
-  # "MaLA-LM/mala-500-10b-v2"
-  "dice-research/lola_v1"
+  "bigscience/bloom"
+  "bigscience/mt0-xxl-mt"
+  "MaLA-LM/mala-500-10b-v2"
+  # "dice-research/lola_v1"
   # "UBC-NLP/serengeti"
 )
 task=senti_english_swahili,senti_english_hausa,senti_english_yoruba
@@ -14,14 +14,14 @@ task=senti_english_swahili,senti_english_hausa,senti_english_yoruba
 for model in "${models[@]}"
 do
   echo "Evaluating model: $model"
-  for fewshot in 2
+  for fewshot in 0 2
   do
     export OUTPUT_DIR=results/$fewshot
 
     mkdir -p "$OUTPUT_DIR"
 
-    accelerate launch -m lm_eval --model hf \
-            --model_args "pretrained=${model}",trust_remote_code=True \
+    lm_eval --model hf \
+            --model_args "pretrained=${model}",trust_remote_code=True,parallelize=True \
             --tasks $task \
             --batch_size 4 \
             --output_path "$OUTPUT_DIR" \
