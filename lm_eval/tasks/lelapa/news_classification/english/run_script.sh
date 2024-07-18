@@ -6,7 +6,7 @@ models=(
   # "bigscience/bloom"
   # "bigscience/mt0-xxl-mt"
   # "MaLA-LM/mala-500-10b-v2"
-  "dice-research/lola_v1"
+  # "dice-research/lola_v1"
   "UBC-NLP/serengeti"
 )
 task=nc_english_swahili,nc_english_hausa,nc_english_yoruba
