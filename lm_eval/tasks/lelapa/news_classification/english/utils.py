@@ -9,7 +9,7 @@ def doc_to_target_hausa(doc):
         "kiwon lafiya": "Health",
         "lafiya": "Health",
         "nishaɗi": "Entertainment",
-        "Kasuwanci": "Business",
+        "kasuwanci": "Business",
         "siyasa": "Politics",
         "wasanni": "Sports",
         "balaguro": "Travel",
