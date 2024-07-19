@@ -1,11 +1,12 @@
 models=(
-#   dice-research/lola_v1
-  UBC-NLP/serengeti)
+  dice-research/lola_v1
+#   UBC-NLP/serengeti
+  )
 
 for model in "${models[@]}"
 do
   echo "Evaluating model: $model"
-  for fewshot in 0
+  for fewshot in 5 # 0 5
   do
     export OUTPUT_DIR=results/$fewshot
     mkdir -p "$OUTPUT_DIR"
