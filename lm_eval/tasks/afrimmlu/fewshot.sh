@@ -1,5 +1,5 @@
 models=(
-  dice-research/lola_v1
+#   dice-research/lola_v1
   UBC-NLP/serengeti)
 
 for model in "${models[@]}"
