@@ -5,7 +5,7 @@ models=(
 for model in "${models[@]}"
 do
   echo "Evaluating model: $model"
-  for fewshot in 0 2
+  for fewshot in 0
   do
     export OUTPUT_DIR=results/$fewshot
     mkdir -p "$OUTPUT_DIR"
