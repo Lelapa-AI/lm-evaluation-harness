@@ -1,5 +1,6 @@
 models=(
-  dice-research/lola_v1
+#   dice-research/lola_v1
+  bonadossou/afrolm_active_learning
 #   UBC-NLP/serengeti
   )
 
