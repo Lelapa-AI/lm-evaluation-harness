@@ -7,7 +7,7 @@ Davlan/afro-xlmr-large
 for model in "${models[@]}"
 do
   echo "Evaluating model: $model"
-  for fewshot in 0 5
+  for fewshot in 0 # 5
   do
     export OUTPUT_DIR=results/$fewshot
     mkdir -p "$OUTPUT_DIR"
