@@ -1,6 +1,6 @@
 models=(
 #   dice-research/lola_v1
-  bonadossou/afrolm_active_learning
+Davlan/afro-xlmr-large
 #   UBC-NLP/serengeti
   )
 
