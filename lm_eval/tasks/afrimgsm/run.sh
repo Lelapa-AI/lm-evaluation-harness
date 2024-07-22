@@ -4,7 +4,7 @@ models=(
         dice-research/lola_v1
 )
 #task=afrimgsm_translate_swa,afrimgsm_translate_fra,afrimgsm_translate_yor,afrimgsm_translate_zul,afrimgsm_translate_xho,afrimgsm_translate_hau \ 
-task=afrimgsm_en_cot_eng,afrimgsm_en_cot_swa,afrimgsm_en_cot_fra,afrimgsm_en_cot_yor,afrimgsm_en_cot_zul,afrimgsm_en_cot_xho,afrimgsm_en_cot_hau \ 
+task=afrimgsm_en_cot_eng,afrimgsm_en_cot_swa,afrimgsm_en_cot_fra,afrimgsm_en_cot_yor,afrimgsm_en_cot_zul,afrimgsm_en_cot_xho,afrimgsm_en_cot_hau # \ 
 # task=afrimgsm_direct_eng,afrimgsm_direct_swa,afrimgsm_direct_fra,afrimgsm_direct_yor,afrimgsm_direct_zul,afrimgsm_direct_xho,afrimgsm_direct_hau \
 
 for model in "${models[@]}"
