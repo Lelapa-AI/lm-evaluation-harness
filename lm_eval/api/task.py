@@ -1197,7 +1197,6 @@ class ConfigurableTask(Task):
             doc_to_target = self.prompt
         else:
             doc_to_target = self.config.doc_to_target
-
         if isinstance(doc_to_target, int):
             return doc_to_target
         elif isinstance(doc_to_target, str):
@@ -1445,10 +1444,10 @@ class ConfigurableTask(Task):
             # we expect multiple_targets to be a list.
             elif self.multiple_target:
                 gold = list(gold)
-            elif type(gold) != type(result):
-                # cast gold to the same type as result
-                gold = type(result)(gold)
-
+            # elif type(gold) != type(result):
+            #     # cast gold to the same type as result
+            #     gold = type(result)(gold)
+            # print(f"gold2 {gold}")
             for metric in self._metric_fn_list.keys():
                 if self.multiple_target:
                     # in the case where we have multiple targets,

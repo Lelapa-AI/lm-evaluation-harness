@@ -305,6 +305,8 @@ def make_table(result_dict, column: str = "results", sort_results: bool = True):
             metric_items = sorted(metric_items)
 
         for (mf), v in metric_items:
+            if v is None:
+                v = 0
             m, _, f = mf.partition(",")
             if m.endswith("_stderr"):
                 continue
@@ -315,6 +317,8 @@ def make_table(result_dict, column: str = "results", sort_results: bool = True):
                 se = dic[m + "_stderr" + "," + f]
                 if se != "N/A":
                     se = "%.4f" % se
+                elif se is None:
+                    se = 0
                 values.append([k, version, f, n, m, hib, "%.4f" % v, "±", se])
             else:
                 values.append([k, version, f, n, m, hib, "%.4f" % v, "", ""])

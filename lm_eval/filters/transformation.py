@@ -54,3 +54,62 @@ class MapFilter(Filter):
             return [self.mapping_dict.get(resp, self.default_value) for resp in inst]
 
         return [filter_set(resp) for resp in resps]
+
+
+@register_filter("format_span")
+class SAPNFilter(Filter):
+    def __init__(self, pos=False) -> None:
+        self.pos = pos
+
+    def apply(self, resps, docs):
+        def format_ner_text(text, target=False):
+            label_dict = {'person': 'PER',
+                          'location': 'LOC',
+                          'organization': 'ORG',
+                          'miscellaneous': 'MISC',
+                          'date': 'DATE',
+                          'per': 'PER',
+                          'loc': 'LOC',
+                          'org': 'ORG',
+                          'misc': 'MISC'}
+            text = text.lower()
+            for key, value in label_dict.items():
+                text = text.replace(key, value) if not target else text.replace(value.lower(), value)
+
+            text = "$".join(i for i in text.split('$$'))
+            return text.rstrip('$$')
+
+        def format_pos_text(text, target=False):
+            label_dict = {'adjectives': 'ADJ',
+                          'adposition': 'ADP',
+                          'adverbs': 'ADV',
+                          'auxiliary': 'AUX',
+                          'conjunctions': 'CONJ',
+                          'coordinating conjunction': 'CCONJ',
+                          'subordinating conjunction conjunction': 'SCONJ',
+                          'determiners': 'DET',
+                          'interjections': 'INTJ',
+                          'nouns': 'NOUN',
+                          'numeral': 'NUM',
+                          'particle': 'PART',
+                          'pronouns': 'PRON',
+                          'prepositions': 'LOC',
+                          'proper noun': 'PROPN',
+                          'punctuation': 'PUNCT',
+                          'verb': 'VERB',
+                          'symbol': 'SYM',
+                          'other': 'X'
+                          }
+            text = text.lower()
+            for key, value in label_dict.items():
+                text = text.replace(key, value) if not target else text.replace(value.lower(), value)
+
+            text = "$".join(i for i in text.split('$$'))
+            return text.rstrip('$$')
+
+        def filter_set(inst):
+            if self.pos:
+                return [format_pos_text(resp.lower()) for resp in inst]
+            else:
+                return [format_ner_text(resp.lower()) for resp in inst]
+        return [filter_set(resp) for resp in resps]
