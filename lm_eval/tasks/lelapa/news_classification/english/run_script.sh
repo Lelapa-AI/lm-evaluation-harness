@@ -1,13 +1,14 @@
 #!/bin/bash
 
 models=(
-  # "bonadossou/afrolm_active_learning"
-  # "Davlan/afro-xlmr-large"
-  # "bigscience/bloom"
+  # "lelapa/lelapa-llama-13b-instruction-finetuned-with-lora-model-v2"
+  # "google/flan-t5-xxl"
   # "bigscience/mt0-xxl-mt"
-  # "MaLA-LM/mala-500-10b-v2"
-  # "dice-research/lola_v1"
-  "UBC-NLP/serengeti"
+  # "CohereForAI/aya-101"
+  # "bigscience/bloomz-7b1-mt"
+  # "meta-llama/Meta-Llama-3-8B-Instruct"
+  dice-research/lola_v1
+  UBC-NLP/serengeti
 )
 task=nc_english_swahili,nc_english_hausa,nc_english_yoruba
 
