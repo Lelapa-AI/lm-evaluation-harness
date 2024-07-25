@@ -1,4 +1,3 @@
-import datasets
 from sklearn.metrics import f1_score
 
 
@@ -12,8 +11,8 @@ def transform_text(text):
     current_tag = ""
 
     for pair in text.split('\n'):
-        if pair.strip():  # Check if the line is not empty
-            word, tag = pair.split(': ')
+        if pair:  # Check if the line is not empty
+            word, tag = pair.strip().split(': ')
             tag = tag.upper()
             word = word.lower()
             word = word.strip(',.').strip()

@@ -66,12 +66,18 @@ class SAPNFilter(Filter):
             label_dict = {'person': 'PER',
                           'location': 'LOC',
                           'organization': 'ORG',
-                          'miscellaneous': 'MISC',
+                          'counties': 'LOC',
+                          'places': 'LOC',
+                          'people': 'PER',
+                          'persons': 'PER',
+                          'company': 'ORG',
+                          'country': 'LOC',
+                          'continent': 'LOC',
+                          'time': 'DATE',
                           'date': 'DATE',
                           'per': 'PER',
                           'loc': 'LOC',
-                          'org': 'ORG',
-                          'misc': 'MISC'}
+                          'org': 'ORG'}
             text = text.lower()
             for key, value in label_dict.items():
                 text = text.replace(key, value) if not target else text.replace(value.lower(), value)
@@ -97,8 +103,7 @@ class SAPNFilter(Filter):
                           'proper noun': 'PROPN',
                           'punctuation': 'PUNCT',
                           'verb': 'VERB',
-                          'symbol': 'SYM',
-                          'other': 'X'
+                          'symbol': 'SYM'
                           }
             text = text.lower()
             for key, value in label_dict.items():

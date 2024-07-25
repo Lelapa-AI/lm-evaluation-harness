@@ -9,11 +9,12 @@ def transform_text(text):
     pos_pairs = []
 
     for pair in text.split('\n'):
-        if pair.strip():
-            word, tag = pair.split(': ')
+        if pair:
+            word, tag = pair.strip().split(': ')
             word = word.lower()
             tag = tag.upper()
-            pos_pairs.append(f"{tag}: {word}")
+            if tag != 'X':
+                pos_pairs.append(f"{tag}: {word}")
 
     # Join all the transformed output lines with $$ as separator
     return ' $$ '.join(pos_pairs)

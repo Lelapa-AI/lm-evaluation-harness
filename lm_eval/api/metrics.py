@@ -123,14 +123,17 @@ def span_f1_seqio(items):
 
     def tags_to_spans(tag_sequence, delimiter="$$"):
         """Extract spans from IOB1 or BIO tags."""
-        tag_sequence_split = [item.strip() for sub in tag_sequence.split(delimiter) for item in sub.split('$') if item]
+        if isinstance(tag_sequence, list):
+            tag_sequence = " ".join(i.strip() for i in tag_sequence)
+        tag_sequence_split = [item.strip() for sub in tag_sequence.strip().split(delimiter) for item in sub.split('$') if item]
+        tag_sequence_split = [item.strip() for value in tag_sequence_split for sub in value.split(". ") for item in sub.split(", ")]
         tags_entities = []
         for tag_entity in tag_sequence_split:
-            tag_entity_split = tag_entity.split(":")
+            tag_entity_split = tag_entity.split(": ")
             if len(tag_entity_split) != 2:
                 continue
             tag = normalize_text(tag_entity_split[0].strip())
-            entity = normalize_text(tag_entity_split[1].strip())
+            entity = normalize_text(tag_entity_split[1].rstrip().lstrip())
             tags_entities.append((tag, entity))
         return tags_entities
 
@@ -144,7 +147,7 @@ def span_f1_seqio(items):
         f1_measures = 2.0 * ((precision * recall) / (precision + recall + 1e-13))
         return precision, recall, f1_measures
 
-    for target, pred in zip(targets[0], predictions[0]):
+    for target, pred in zip(targets, predictions):
         gold_spans = tags_to_spans(target)
         predicted_spans = tags_to_spans(pred)
 
@@ -158,13 +161,13 @@ def span_f1_seqio(items):
         for span in gold_spans:
             false_negatives[span[0]] += 1
 
-        _, _, f1_measure = compute_f1_metrics(
-            sum(true_positives.values()),
-            sum(false_positives.values()),
-            sum(false_negatives.values()),
-        )
+    _, _, f1_measure = compute_f1_metrics(
+        sum(true_positives.values()),
+        sum(false_positives.values()),
+        sum(false_negatives.values()),
+    )
 
-        return f1_measure
+    return f1_measure
 
 
 @register_metric(
