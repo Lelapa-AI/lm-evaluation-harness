@@ -1,3 +1,4 @@
+import re
 import logging
 import math
 import random
@@ -6,6 +7,8 @@ import string
 from collections.abc import Iterable
 from typing import List
 
+import evaluate as hf_evaluate
+import collections
 import numpy as np
 import sacrebleu
 import sklearn.metrics
@@ -66,6 +69,116 @@ def matthews_corrcoef(items):
     preds = unzipped_list[1]
     # print(preds)
     return sklearn.metrics.matthews_corrcoef(golds, preds)
+
+
+@register_aggregation("span_f1_agg")
+def span_f1_seqio(items):
+    """Computes Span based F1 score.
+
+    This function is copied from
+    https://github.com/google-research/multilingual-t5/blob/master/multilingual_t5/evaluation/metrics.py
+
+    Args:
+    targets: list of strings or list of list of strings if multiple references
+      are present.
+    predictions: list of strings
+
+    Returns:
+    span f1 across all targets and predictions (Based on CoNLL script)
+    """
+    unzipped_list = list(zip(*items))
+    targets = unzipped_list[0]
+    predictions = unzipped_list[1]
+
+    true_positives = collections.defaultdict(int)
+    false_positives = collections.defaultdict(int)
+    false_negatives = collections.defaultdict(int)
+
+    def normalize_text(string):
+        def get_blank_spaces_pattern():
+            return re.compile(r'\s{3,}|\t')
+
+        def remove_blank_spaces(text):
+            text = re.sub(pattern=get_blank_spaces_pattern(), repl='', string=text)
+            text = re.sub('\s+', ' ', text)
+            return text
+
+        def remove_punctuation(text):
+            my_punctuation = '!"$%&\'()*+,-./:;<=>?[\\]^_`{|}~•@.""-,`'
+            text = re.sub('[' + my_punctuation + ']+', ' ', str(text))  # strip punctuation
+            return text
+
+        def remove_articles(text):
+            regex = re.compile(r"\b(a|an|the)\b", re.UNICODE)
+            return re.sub(regex, " ", text)
+
+        def lowercase(text):
+            text = text.lower()
+            return text
+
+        string = remove_punctuation(string)
+        string = remove_articles(string)
+        string = remove_blank_spaces(string)
+        string = lowercase(string)
+
+        return string
+
+    def tags_to_spans(tag_sequence, delimiter="$$"):
+        """Extract spans from IOB1 or BIO tags."""
+        if isinstance(tag_sequence, list):
+            tag_sequence = " ".join(i.strip() for i in tag_sequence)
+        tag_sequence_split = [item.strip() for sub in tag_sequence.strip().split(delimiter) for item in sub.split('$') if item]
+        tag_sequence_split = [item.strip() for value in tag_sequence_split for sub in value.split(". ") for item in sub.split(", ")]
+        tags_entities = []
+        for tag_entity in tag_sequence_split:
+            tag_entity_split = tag_entity.split(": ")
+            if len(tag_entity_split) != 2:
+                continue
+            tag = normalize_text(tag_entity_split[0].strip())
+            entity = normalize_text(tag_entity_split[1].rstrip().lstrip())
+            tags_entities.append((tag, entity))
+        return tags_entities
+
+    def compute_f1_metrics(true_positive, false_positive, false_negative):
+        precision = float(true_positive) / float(
+            true_positive + false_positive + 1e-13
+        )
+        recall = float(true_positive) / float(
+            true_positive + false_negative + 1e-13
+        )
+        f1_measures = 2.0 * ((precision * recall) / (precision + recall + 1e-13))
+        return precision, recall, f1_measures
+
+    for target, pred in zip(targets, predictions):
+        gold_spans = tags_to_spans(target)
+        predicted_spans = tags_to_spans(pred)
+
+        for span in predicted_spans:
+            if span in gold_spans:
+                true_positives[span[0]] += 1
+                gold_spans.remove(span)
+            else:
+                false_positives[span[0]] += 1
+        # These spans weren't predicted.
+        for span in gold_spans:
+            false_negatives[span[0]] += 1
+
+    _, _, f1_measure = compute_f1_metrics(
+        sum(true_positives.values()),
+        sum(false_positives.values()),
+        sum(false_negatives.values()),
+    )
+    return f1_measure
+
+
+@register_metric(
+    metric="span_f1",
+    higher_is_better=True,
+    output_type=["generate_until"],
+    aggregation="span_f1_agg",
+)
+def span_f1(items):  # This is a passthrough function
+    return items
 
 
 @register_aggregation("bleu")

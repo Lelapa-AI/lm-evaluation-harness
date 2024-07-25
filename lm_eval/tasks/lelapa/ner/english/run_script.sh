@@ -8,7 +8,7 @@ models=(
   "bigscience/bloomz-7b1-mt"
   "meta-llama/Meta-Llama-3-8B-Instruct"
 )
-task=pos_hausa,pos_isizulu,pos_swahili,pos_xhosa,pos_yoruba
+task=ner_english_hausa,ner_english_isizulu,ner_english_swahili,ner_english_xhosa,ner_english_yoruba
 
 for model in "${models[@]}"
 do

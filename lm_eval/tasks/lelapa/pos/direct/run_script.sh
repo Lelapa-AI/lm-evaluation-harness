@@ -1,29 +1,29 @@
 #!/bin/bash
 
 models=(
-  # "bonadossou/afrolm_active_learning"
-  # "Davlan/afro-xlmr-large"
-  # "bigscience/bloom"
-  # "bigscience/mt0-xxl-mt"
-  # "MaLA-LM/mala-500-10b-v2"
-  "dice-research/lola_v1"
-  "UBC-NLP/serengeti"
+  "lelapa/lelapa-llama-13b-instruction-finetuned-with-lora-model-v2"
+  "google/flan-t5-xxl"
+  "bigscience/mt0-xxl-mt"
+  "CohereForAI/aya-101"
+  "bigscience/bloomz-7b1-mt"
+  "meta-llama/Meta-Llama-3-8B-Instruct"
 )
-task=mmt_english_eng-hau,mmt_english_eng-swa,mmt_english_eng-xho,mmt_english_eng-yor,mmt_english_eng-zul
+task=pos_direct_hausa,pos_isizulu,pos_swahili,pos_xhosa,pos_yoruba
 
 for model in "${models[@]}"
 do
   echo "Evaluating model: $model"
-  for fewshot in 0 2
+  for fewshot in 0 2 4 6 8
   do
     export OUTPUT_DIR=results/$fewshot
 
     mkdir -p "$OUTPUT_DIR"
 
-    accelerate launch -m lm_eval --model hf \
+    lm_eval --model hf \
             --model_args "pretrained=${model}",trust_remote_code=True \
             --tasks $task \
-            --batch_size 4 \
+            --device cuda:0 \
+            --batch_size 16 \
             --output_path "$OUTPUT_DIR" \
             --num_fewshot $fewshot \
             --verbosity DEBUG \
