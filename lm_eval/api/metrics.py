@@ -166,7 +166,6 @@ def span_f1_seqio(items):
         sum(false_positives.values()),
         sum(false_negatives.values()),
     )
-
     return f1_measure
 
 
