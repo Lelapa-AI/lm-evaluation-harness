@@ -368,10 +368,14 @@ def make_table(result_dict, column: str = "results", sort_results: bool = False)
             if m + "_stderr" + "," + f in dic:
                 se = dic[m + "_stderr" + "," + f]
                 if se != "N/A":
-                    se = "%.4f" % se
+                    try:
+                        se = "%.4f" % se
+                    except (ValueError, TypeError):
+                        se = "N/A"
                 elif se is None:
                     se = 0
-                se = "   N/A" if se == "N/A" else "%.4f" % se
+                else:
+                    se = "   N/A"
                 values.append([k, version, f, n, m, hib, v, "±", se])
             else:
                 values.append([k, version, f, n, m, hib, v, "", ""])
