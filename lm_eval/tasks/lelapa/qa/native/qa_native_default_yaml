@@ -1,0 +1,19 @@
+tag:
+    - lelapa
+    - qa
+dataset_path: lelapa/QA_filtered_dataset
+should_decontaminate: true
+doc_to_decontamination_query: inputs
+output_type: generate_until
+validation_split: dev
+test_split: test
+fewshot_split: dev
+doc_to_target: targets
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+    ignore_case: true
+    ignore_punctuation: true
+metadata:
+  version: 1.0
